@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@200;400;600&display=swap");
+
+:root {
+  /* Cores */
+  --white1: #f8f8f8;
+
+  --dark1: #212121;
+
+  --green1: #c2fdea;
+  --green2: #59f2cb;
+  --green3: #52e1bc;
+  --green4: #48c9a8;
+  --green5: #06221b;
+  --green6: #03140f;
+
+  --red1: #f64a53;
+  --red2: #de2332;
+  --red3: #98151f;
+
+  --violet1: #c6b8f1;
+  --violet2: #b09beb;
+  --violet3: #9c7ee5;
+  --violet4: #8a62df;
+  --violet5: #7945d6;
+  --violet6: #6433b7;
+
+  --blue1: #02a0d7;
+
+  --orange1: #ef8d33;
+  /* Tamanhos */
+
+  --w: 100dvw;
+  --h: 100dvh;
+  --p: 24px;
+
+  --header: 80px;
+  --footer: 80px;
+
+  --leftMenu: 0;
+  --w-menu: 280px;
+
+  /* Renderização */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Mobile */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Touch UI */
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Drag */
+  -webkit-user-drag: none;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: var(--w);
+  height: var(--h);
+
+  background-color: var(--dark1);
+  color: var(--white1);
+  font-family: "Fira Code", monospace;
+  overflow-x: hidden;
+}
+
+#app {
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.page {
+  width: var(--w);
+  height: calc(var(--h) - var(--header));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
