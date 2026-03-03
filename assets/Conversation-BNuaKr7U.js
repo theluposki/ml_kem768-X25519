@@ -1,1 +1,0 @@
-import{_ as e,o as t,E as a,c as o,a as s}from"./index-CUa4Vjpk.js";const n={class:"conversation page"},c={__name:"Conversation",setup(r){return t(()=>{a.emit("active-btn-back")}),(_,i)=>(s(),o("main",n," conversa "))}},m=e(c,[["__scopeId","data-v-81b3df70"]]);export{m as default};

@@ -1,1 +1,0 @@
-import{_ as t,o as e,E as a,c as o,a as s}from"./index-CUa4Vjpk.js";const c={class:"about page"},_={__name:"About",setup(n){return e(()=>{a.emit("active-btn-menu")}),(r,u)=>(s(),o("main",c," About "))}},p=t(_,[["__scopeId","data-v-9a4414ea"]]);export{p as default};
