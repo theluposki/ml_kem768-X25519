@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { RouterView } from 'vue-router'
 import HeaderM from '@/components/headerM.vue'
 import Menu from '@/components/menu.vue'
+import Bg from './components/bg.vue';
 
 const activeMenu = ref(false);
 
@@ -19,6 +20,9 @@ Emitter.on('close-menu', () => {
 </script>
 
 <template>
+
+  <Bg />
+
   <HeaderM />
   <Transition name="menu-slide">
     <Menu v-if="activeMenu" />
@@ -54,4 +58,5 @@ Emitter.on('close-menu', () => {
 .menu-slide-leave-active {
   transition: transform .35s ease, opacity .35s ease;
 }
+
 </style>

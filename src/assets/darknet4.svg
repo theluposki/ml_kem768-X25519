@@ -1,0 +1,560 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      @keyframes fadeloop {
+        0%, 100% { opacity: 0.08; }
+        50% { opacity: 0.22; }
+      }
+      @keyframes glitch {
+        0%, 92%, 100% { transform: translate(0,0); }
+        93% { transform: translate(-5px, 1px); }
+        94% { transform: translate(5px, -1px); }
+        95% { transform: translate(-3px, 2px); }
+        96% { transform: translate(3px, 0); }
+      }
+      @keyframes shimmer {
+        0%   { opacity: 0.05; }
+        30%  { opacity: 0.9; }
+        60%  { opacity: 0.4; }
+        100% { opacity: 0.05; }
+      }
+      .mono { font-family: 'Courier New', monospace; }
+      .cursor { fill: #00ff41; animation: blink 1s step-end infinite; }
+    </style>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-lg">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <linearGradient id="vig-v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000" stop-opacity="0.75"/>
+      <stop offset="18%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="82%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="vig-h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#000" stop-opacity="0.55"/>
+      <stop offset="12%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="88%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <pattern id="lines" x="0" y="0" width="800" height="4" patternUnits="userSpaceOnUse">
+      <rect width="800" height="1" fill="#00ff41" opacity="0.018"/>
+    </pattern>
+  </defs>
+
+  <!-- BG -->
+  <rect width="800" height="600" fill="#010901"/>
+  <rect width="800" height="600" fill="url(#lines)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  MATRIX RAIN — full grid of characters -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- HEAD chars (bright white-green) + TRAIL chars (progressively darker) -->
+  <!-- We use 18 columns spaced 44px apart, covering x=10..770 -->
+
+  <!-- col 0 x=10 -->
+  <text class="mono" font-size="13" x="10" y="28"  fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.1s 0.0s infinite">F</text>
+  <text class="mono" font-size="13" x="10" y="44"  fill="#00ff41" opacity="0.85">3</text>
+  <text class="mono" font-size="13" x="10" y="60"  fill="#00cc33" opacity="0.6">A</text>
+  <text class="mono" font-size="13" x="10" y="76"  fill="#008822" opacity="0.4">0</text>
+  <text class="mono" font-size="13" x="10" y="92"  fill="#004411" opacity="0.25">9</text>
+  <text class="mono" font-size="13" x="10" y="108" fill="#002208" opacity="0.13">C</text>
+  <text class="mono" font-size="13" x="10" y="124" fill="#001104" opacity="0.07">1</text>
+  <!-- second burst lower -->
+  <text class="mono" font-size="13" x="10" y="360" fill="#00ff41" filter="url(#glow)" opacity="0.9" style="animation:shimmer 7.3s 2.1s infinite">B</text>
+  <text class="mono" font-size="13" x="10" y="376" fill="#00cc33" opacity="0.6">E</text>
+  <text class="mono" font-size="13" x="10" y="392" fill="#008822" opacity="0.35">2</text>
+  <text class="mono" font-size="13" x="10" y="408" fill="#003311" opacity="0.18">7</text>
+
+  <!-- col 1 x=54 -->
+  <text class="mono" font-size="13" x="54" y="188" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 5.7s 1.3s infinite">9</text>
+  <text class="mono" font-size="13" x="54" y="204" fill="#00ff41" opacity="0.8">D</text>
+  <text class="mono" font-size="13" x="54" y="220" fill="#00cc33" opacity="0.55">4</text>
+  <text class="mono" font-size="13" x="54" y="236" fill="#008822" opacity="0.33">A</text>
+  <text class="mono" font-size="13" x="54" y="252" fill="#004411" opacity="0.18">F</text>
+  <text class="mono" font-size="13" x="54" y="268" fill="#002208" opacity="0.09">1</text>
+  <text class="mono" font-size="13" x="54" y="480" fill="#00ff41" filter="url(#glow)" opacity="0.75" style="animation:shimmer 8.2s 0.8s infinite">C</text>
+  <text class="mono" font-size="13" x="54" y="496" fill="#00aa22" opacity="0.45">5</text>
+  <text class="mono" font-size="13" x="54" y="512" fill="#005511" opacity="0.22">E</text>
+
+  <!-- col 2 x=98 -->
+  <text class="mono" font-size="13" x="98" y="60"  fill="#00ff41" filter="url(#glow)" style="animation:shimmer 6.8s 3.0s infinite">7</text>
+  <text class="mono" font-size="13" x="98" y="76"  fill="#00dd33" opacity="0.7">B</text>
+  <text class="mono" font-size="13" x="98" y="92"  fill="#009922" opacity="0.45">2</text>
+  <text class="mono" font-size="13" x="98" y="108" fill="#005511" opacity="0.27">6</text>
+  <text class="mono" font-size="13" x="98" y="124" fill="#002a08" opacity="0.13">F</text>
+  <text class="mono" font-size="13" x="98" y="320" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 5.2s 1.7s infinite">A</text>
+  <text class="mono" font-size="13" x="98" y="336" fill="#00ff41" opacity="0.8">0</text>
+  <text class="mono" font-size="13" x="98" y="352" fill="#00cc33" opacity="0.5">3</text>
+  <text class="mono" font-size="13" x="98" y="368" fill="#008822" opacity="0.28">D</text>
+  <text class="mono" font-size="13" x="98" y="384" fill="#003311" opacity="0.14">9</text>
+
+  <!-- col 3 x=142 -->
+  <text class="mono" font-size="13" x="142" y="440" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 7.5s 0.4s infinite">E</text>
+  <text class="mono" font-size="13" x="142" y="456" fill="#00cc33" opacity="0.65">4</text>
+  <text class="mono" font-size="13" x="142" y="472" fill="#009922" opacity="0.4">C</text>
+  <text class="mono" font-size="13" x="142" y="488" fill="#004411" opacity="0.2">8</text>
+  <text class="mono" font-size="13" x="142" y="504" fill="#002208" opacity="0.1">1</text>
+  <text class="mono" font-size="13" x="142" y="130" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.3s 2.5s infinite">5</text>
+  <text class="mono" font-size="13" x="142" y="146" fill="#00ff41" opacity="0.75">F</text>
+  <text class="mono" font-size="13" x="142" y="162" fill="#00bb22" opacity="0.45">A</text>
+  <text class="mono" font-size="13" x="142" y="178" fill="#006611" opacity="0.25">3</text>
+
+  <!-- col 4 x=186 — HASH column! -->
+  <text class="mono" font-size="13" x="186" y="240" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 9.1s 1.1s infinite">#</text>
+  <text class="mono" font-size="13" x="186" y="256" fill="#00cc33" opacity="0.7">#</text>
+  <text class="mono" font-size="13" x="186" y="272" fill="#009922" opacity="0.45">#</text>
+  <text class="mono" font-size="13" x="186" y="288" fill="#005511" opacity="0.25">#</text>
+  <text class="mono" font-size="13" x="186" y="304" fill="#002208" opacity="0.12">#</text>
+  <!-- another burst -->
+  <text class="mono" font-size="13" x="186" y="520" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 5.9s 3.3s infinite">#</text>
+  <text class="mono" font-size="13" x="186" y="536" fill="#00ff41" opacity="0.7">#</text>
+  <text class="mono" font-size="13" x="186" y="552" fill="#00aa22" opacity="0.4">#</text>
+
+  <!-- col 5 x=230 -->
+  <text class="mono" font-size="13" x="230" y="100" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 7.0s 0.9s infinite">6</text>
+  <text class="mono" font-size="13" x="230" y="116" fill="#00dd33" opacity="0.7">C</text>
+  <text class="mono" font-size="13" x="230" y="132" fill="#009922" opacity="0.43">F</text>
+  <text class="mono" font-size="13" x="230" y="148" fill="#005511" opacity="0.24">2</text>
+  <text class="mono" font-size="13" x="230" y="164" fill="#002208" opacity="0.12">9</text>
+  <text class="mono" font-size="13" x="230" y="400" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.5s 2.0s infinite">8</text>
+  <text class="mono" font-size="13" x="230" y="416" fill="#00ff41" opacity="0.8">A</text>
+  <text class="mono" font-size="13" x="230" y="432" fill="#00cc33" opacity="0.5">0</text>
+  <text class="mono" font-size="13" x="230" y="448" fill="#007711" opacity="0.28">4</text>
+
+  <!-- col 6 x=274 — HASH column! -->
+  <text class="mono" font-size="13" x="274" y="540" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 8.4s 1.6s infinite">#</text>
+  <text class="mono" font-size="13" x="274" y="556" fill="#00cc33" opacity="0.65">#</text>
+  <text class="mono" font-size="13" x="274" y="572" fill="#009922" opacity="0.38">#</text>
+  <text class="mono" font-size="13" x="274" y="50"  fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 5.5s 0.2s infinite">#</text>
+  <text class="mono" font-size="13" x="274" y="66"  fill="#00ff41" opacity="0.78">#</text>
+  <text class="mono" font-size="13" x="274" y="82"  fill="#00bb22" opacity="0.48">#</text>
+  <text class="mono" font-size="13" x="274" y="98"  fill="#006611" opacity="0.26">#</text>
+
+  <!-- col 7 x=318 -->
+  <text class="mono" font-size="13" x="318" y="290" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 6.7s 2.8s infinite">D</text>
+  <text class="mono" font-size="13" x="318" y="306" fill="#00cc33" opacity="0.68">1</text>
+  <text class="mono" font-size="13" x="318" y="322" fill="#009922" opacity="0.42">7</text>
+  <text class="mono" font-size="13" x="318" y="338" fill="#005511" opacity="0.23">E</text>
+  <text class="mono" font-size="13" x="318" y="354" fill="#002208" opacity="0.11">3</text>
+  <text class="mono" font-size="13" x="318" y="510" fill="#00ff41" filter="url(#glow)" opacity="0.72" style="animation:shimmer 9.3s 0.6s infinite">B</text>
+  <text class="mono" font-size="13" x="318" y="526" fill="#00aa22" opacity="0.42">4</text>
+  <text class="mono" font-size="13" x="318" y="542" fill="#004411" opacity="0.2">9</text>
+
+  <!-- col 8 x=362 — center-left -->
+  <text class="mono" font-size="13" x="362" y="160" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 7.8s 3.4s infinite">0</text>
+  <text class="mono" font-size="13" x="362" y="176" fill="#00ff41" opacity="0.82">A</text>
+  <text class="mono" font-size="13" x="362" y="192" fill="#00dd33" opacity="0.54">5</text>
+  <text class="mono" font-size="13" x="362" y="208" fill="#009922" opacity="0.32">C</text>
+  <text class="mono" font-size="13" x="362" y="224" fill="#004411" opacity="0.16">F</text>
+  <text class="mono" font-size="13" x="362" y="460" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 6.0s 1.5s infinite">#</text>
+  <text class="mono" font-size="13" x="362" y="476" fill="#00cc33" opacity="0.62">#</text>
+  <text class="mono" font-size="13" x="362" y="492" fill="#009922" opacity="0.37">#</text>
+  <text class="mono" font-size="13" x="362" y="508" fill="#004411" opacity="0.18">#</text>
+
+  <!-- col 9 x=406 — center -->
+  <text class="mono" font-size="13" x="406" y="380" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 5.4s 2.2s infinite">2</text>
+  <text class="mono" font-size="13" x="406" y="396" fill="#00ff41" opacity="0.8">F</text>
+  <text class="mono" font-size="13" x="406" y="412" fill="#00cc33" opacity="0.52">9</text>
+  <text class="mono" font-size="13" x="406" y="428" fill="#008822" opacity="0.3">4</text>
+  <text class="mono" font-size="13" x="406" y="444" fill="#003311" opacity="0.15">B</text>
+  <text class="mono" font-size="13" x="406" y="80"  fill="#00ff41" filter="url(#glow)" style="animation:shimmer 8.6s 0.3s infinite">7</text>
+  <text class="mono" font-size="13" x="406" y="96"  fill="#00dd33" opacity="0.65">E</text>
+  <text class="mono" font-size="13" x="406" y="112" fill="#009922" opacity="0.4">1</text>
+  <text class="mono" font-size="13" x="406" y="128" fill="#004411" opacity="0.2">3</text>
+
+  <!-- col 10 x=450 — HASH column! -->
+  <text class="mono" font-size="13" x="450" y="200" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 7.2s 1.9s infinite">#</text>
+  <text class="mono" font-size="13" x="450" y="216" fill="#00cc33" opacity="0.7">#</text>
+  <text class="mono" font-size="13" x="450" y="232" fill="#009922" opacity="0.44">#</text>
+  <text class="mono" font-size="13" x="450" y="248" fill="#005511" opacity="0.25">#</text>
+  <text class="mono" font-size="13" x="450" y="264" fill="#002208" opacity="0.12">#</text>
+  <text class="mono" font-size="13" x="450" y="500" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.6s 2.7s infinite">#</text>
+  <text class="mono" font-size="13" x="450" y="516" fill="#00ff41" opacity="0.72">#</text>
+  <text class="mono" font-size="13" x="450" y="532" fill="#00aa22" opacity="0.43">#</text>
+
+  <!-- col 11 x=494 -->
+  <text class="mono" font-size="13" x="494" y="330" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 5.8s 0.7s infinite">C</text>
+  <text class="mono" font-size="13" x="494" y="346" fill="#00dd33" opacity="0.68">8</text>
+  <text class="mono" font-size="13" x="494" y="362" fill="#009922" opacity="0.42">3</text>
+  <text class="mono" font-size="13" x="494" y="378" fill="#005511" opacity="0.23">A</text>
+  <text class="mono" font-size="13" x="494" y="394" fill="#002208" opacity="0.11">0</text>
+  <text class="mono" font-size="13" x="494" y="140" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 8.9s 3.1s infinite">6</text>
+  <text class="mono" font-size="13" x="494" y="156" fill="#00ff41" opacity="0.78">F</text>
+  <text class="mono" font-size="13" x="494" y="172" fill="#00bb22" opacity="0.48">D</text>
+  <text class="mono" font-size="13" x="494" y="188" fill="#006611" opacity="0.26">2</text>
+
+  <!-- col 12 x=538 — HASH column! -->
+  <text class="mono" font-size="13" x="538" y="70"  fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.4s 1.4s infinite">#</text>
+  <text class="mono" font-size="13" x="538" y="86"  fill="#00ff41" opacity="0.8">#</text>
+  <text class="mono" font-size="13" x="538" y="102" fill="#00cc33" opacity="0.52">#</text>
+  <text class="mono" font-size="13" x="538" y="118" fill="#008822" opacity="0.3">#</text>
+  <text class="mono" font-size="13" x="538" y="134" fill="#003311" opacity="0.15">#</text>
+  <text class="mono" font-size="13" x="538" y="410" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 7.7s 2.3s infinite">#</text>
+  <text class="mono" font-size="13" x="538" y="426" fill="#00cc33" opacity="0.65">#</text>
+  <text class="mono" font-size="13" x="538" y="442" fill="#009922" opacity="0.38">#</text>
+  <text class="mono" font-size="13" x="538" y="458" fill="#004411" opacity="0.19">#</text>
+
+  <!-- col 13 x=582 -->
+  <text class="mono" font-size="13" x="582" y="260" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 9.0s 0.5s infinite">E</text>
+  <text class="mono" font-size="13" x="582" y="276" fill="#00dd33" opacity="0.7">5</text>
+  <text class="mono" font-size="13" x="582" y="292" fill="#009922" opacity="0.44">9</text>
+  <text class="mono" font-size="13" x="582" y="308" fill="#005511" opacity="0.25">2</text>
+  <text class="mono" font-size="13" x="582" y="324" fill="#002208" opacity="0.12">C</text>
+  <text class="mono" font-size="13" x="582" y="560" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 5.6s 1.8s infinite">7</text>
+  <text class="mono" font-size="13" x="582" y="576" fill="#00ff41" opacity="0.75">1</text>
+  <text class="mono" font-size="13" x="582" y="592" fill="#00aa22" opacity="0.44">B</text>
+
+  <!-- col 14 x=626 -->
+  <text class="mono" font-size="13" x="626" y="180" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.9s 2.9s infinite">4</text>
+  <text class="mono" font-size="13" x="626" y="196" fill="#00ff41" opacity="0.82">A</text>
+  <text class="mono" font-size="13" x="626" y="212" fill="#00dd33" opacity="0.54">D</text>
+  <text class="mono" font-size="13" x="626" y="228" fill="#009922" opacity="0.32">0</text>
+  <text class="mono" font-size="13" x="626" y="244" fill="#004411" opacity="0.16">3</text>
+  <text class="mono" font-size="13" x="626" y="470" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 8.1s 0.1s infinite">#</text>
+  <text class="mono" font-size="13" x="626" y="486" fill="#00cc33" opacity="0.64">#</text>
+  <text class="mono" font-size="13" x="626" y="502" fill="#009922" opacity="0.37">#</text>
+  <text class="mono" font-size="13" x="626" y="518" fill="#004411" opacity="0.18">#</text>
+
+  <!-- col 15 x=670 — HASH column! -->
+  <text class="mono" font-size="13" x="670" y="350" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 7.4s 1.2s infinite">#</text>
+  <text class="mono" font-size="13" x="670" y="366" fill="#00cc33" opacity="0.7">#</text>
+  <text class="mono" font-size="13" x="670" y="382" fill="#009922" opacity="0.44">#</text>
+  <text class="mono" font-size="13" x="670" y="398" fill="#005511" opacity="0.25">#</text>
+  <text class="mono" font-size="13" x="670" y="414" fill="#002208" opacity="0.12">#</text>
+  <text class="mono" font-size="13" x="670" y="90"  fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 6.2s 3.2s infinite">#</text>
+  <text class="mono" font-size="13" x="670" y="106" fill="#00ff41" opacity="0.78">#</text>
+  <text class="mono" font-size="13" x="670" y="122" fill="#00bb22" opacity="0.48">#</text>
+  <text class="mono" font-size="13" x="670" y="138" fill="#006611" opacity="0.26">#</text>
+
+  <!-- col 16 x=714 -->
+  <text class="mono" font-size="13" x="714" y="480" fill="#00ff41" filter="url(#glow)" style="animation:shimmer 5.3s 2.4s infinite">8</text>
+  <text class="mono" font-size="13" x="714" y="496" fill="#00dd33" opacity="0.68">F</text>
+  <text class="mono" font-size="13" x="714" y="512" fill="#009922" opacity="0.42">1</text>
+  <text class="mono" font-size="13" x="714" y="528" fill="#005511" opacity="0.23">6</text>
+  <text class="mono" font-size="13" x="714" y="544" fill="#002208" opacity="0.11">B</text>
+  <text class="mono" font-size="13" x="714" y="200" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 8.7s 0.0s infinite">A</text>
+  <text class="mono" font-size="13" x="714" y="216" fill="#00ff41" opacity="0.8">2</text>
+  <text class="mono" font-size="13" x="714" y="232" fill="#00bb22" opacity="0.5">E</text>
+  <text class="mono" font-size="13" x="714" y="248" fill="#006611" opacity="0.28">4</text>
+
+  <!-- col 17 x=758 -->
+  <text class="mono" font-size="13" x="758" y="40"  fill="#00ff41" filter="url(#glow)" style="animation:shimmer 6.6s 1.6s infinite">7</text>
+  <text class="mono" font-size="13" x="758" y="56"  fill="#00cc33" opacity="0.68">C</text>
+  <text class="mono" font-size="13" x="758" y="72"  fill="#009922" opacity="0.43">3</text>
+  <text class="mono" font-size="13" x="758" y="88"  fill="#005511" opacity="0.24">9</text>
+  <text class="mono" font-size="13" x="758" y="104" fill="#002208" opacity="0.12">D</text>
+  <text class="mono" font-size="13" x="758" y="310" fill="#ccffcc" filter="url(#glow)" style="animation:shimmer 7.6s 2.6s infinite">5</text>
+  <text class="mono" font-size="13" x="758" y="326" fill="#00ff41" opacity="0.8">E</text>
+  <text class="mono" font-size="13" x="758" y="342" fill="#00cc33" opacity="0.5">0</text>
+  <text class="mono" font-size="13" x="758" y="358" fill="#008822" opacity="0.28">A</text>
+  <text class="mono" font-size="13" x="758" y="374" fill="#003311" opacity="0.14">4</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  LARGE HASH SYMBOLS scattered center  -->
+  <!-- ═══════════════════════════════════════ -->
+  <text class="mono" font-size="72" x="90"  y="220" fill="#00ff41" opacity="0.07" filter="url(#glow-lg)" style="animation:fadeloop 5s 0.0s infinite">#</text>
+  <text class="mono" font-size="52" x="280" y="520" fill="#00ff41" opacity="0.08" filter="url(#glow-lg)" style="animation:fadeloop 6s 1.2s infinite">#</text>
+  <text class="mono" font-size="88" x="380" y="340" fill="#00ff41" opacity="0.06" filter="url(#glow-lg)" style="animation:fadeloop 7s 0.5s infinite">#</text>
+  <text class="mono" font-size="60" x="560" y="160" fill="#00ff41" opacity="0.07" filter="url(#glow-lg)" style="animation:fadeloop 5.5s 2.0s infinite">#</text>
+  <text class="mono" font-size="44" x="660" y="480" fill="#00ff41" opacity="0.09" filter="url(#glow-lg)" style="animation:fadeloop 6.5s 0.8s infinite">#</text>
+  <text class="mono" font-size="56" x="160" y="560" fill="#00ff41" opacity="0.06" filter="url(#glow-lg)" style="animation:fadeloop 8s 1.6s infinite">#</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  LORA MESH NETWORK — center           -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- Node positions (cx,cy):
+       N0 = 400,200  (gateway/root — center top)
+       N1 = 280,280
+       N2 = 520,280
+       N3 = 220,380
+       N4 = 400,360
+       N5 = 580,370
+       N6 = 300,460
+       N7 = 500,450
+       N8 = 400,520  (far edge node)
+  -->
+
+  <!-- ── radio wave rings on gateway ── -->
+  <g opacity="0.18" style="animation:fadeloop 3s 0s infinite">
+    <circle cx="400" cy="200" r="38" fill="none" stroke="#00ff41" stroke-width="1" stroke-dasharray="3 5"/>
+    <circle cx="400" cy="200" r="58" fill="none" stroke="#00ff41" stroke-width="0.8" stroke-dasharray="2 7"/>
+    <circle cx="400" cy="200" r="78" fill="none" stroke="#00ff41" stroke-width="0.6" stroke-dasharray="1 9"/>
+  </g>
+
+  <!-- ── MESH LINKS (lines between nodes) ── -->
+  <g stroke="#00ff41" stroke-width="1.2" fill="none" opacity="0.35">
+    <!-- N0-N1 --> <line x1="400" y1="200" x2="280" y2="280" stroke-dasharray="4 3"/>
+    <!-- N0-N2 --> <line x1="400" y1="200" x2="520" y2="280" stroke-dasharray="4 3"/>
+    <!-- N1-N3 --> <line x1="280" y1="280" x2="220" y2="380" stroke-dasharray="4 3"/>
+    <!-- N1-N4 --> <line x1="280" y1="280" x2="400" y2="360" stroke-dasharray="4 3"/>
+    <!-- N2-N4 --> <line x1="520" y1="280" x2="400" y2="360" stroke-dasharray="4 3"/>
+    <!-- N2-N5 --> <line x1="520" y1="280" x2="580" y2="370" stroke-dasharray="4 3"/>
+    <!-- N3-N6 --> <line x1="220" y1="380" x2="300" y2="460" stroke-dasharray="4 3"/>
+    <!-- N4-N6 --> <line x1="400" y1="360" x2="300" y2="460" stroke-dasharray="4 3"/>
+    <!-- N4-N7 --> <line x1="400" y1="360" x2="500" y2="450" stroke-dasharray="4 3"/>
+    <!-- N5-N7 --> <line x1="580" y1="370" x2="500" y2="450" stroke-dasharray="4 3"/>
+    <!-- N6-N8 --> <line x1="300" y1="460" x2="400" y2="520" stroke-dasharray="4 3"/>
+    <!-- N7-N8 --> <line x1="500" y1="450" x2="400" y2="520" stroke-dasharray="4 3"/>
+    <!-- cross N1-N2 --> <line x1="280" y1="280" x2="520" y2="280" stroke-dasharray="2 6" opacity="0.5"/>
+    <!-- cross N3-N4 --> <line x1="220" y1="380" x2="400" y2="360" stroke-dasharray="2 6" opacity="0.5"/>
+    <!-- cross N5-N4 --> <line x1="580" y1="370" x2="400" y2="360" stroke-dasharray="2 6" opacity="0.5"/>
+  </g>
+
+  <!-- RSSI / SNR labels on link midpoints -->
+  <!-- good=-70~-80 green | marginal=-80~-95 yellow-green | weak>-95 orange -->
+
+  <!-- N0-N1 mid~(340,240) -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.82">
+    <text fill="#00ff41" x="304" y="233">-67dBm</text>
+    <text fill="#7fff00" x="304" y="242">SNR+8.5</text>
+  </g>
+  <!-- N0-N2 mid~(460,240) -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.82">
+    <text fill="#00ff41" x="462" y="233">-71dBm</text>
+    <text fill="#7fff00" x="462" y="242">SNR+6.0</text>
+  </g>
+  <!-- N1-N4 mid~(340,320) -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.76">
+    <text fill="#00ff41" x="294" y="315">-74dBm</text>
+    <text fill="#7fff00" x="294" y="324">SNR+4.5</text>
+  </g>
+  <!-- N2-N4 mid~(460,320) -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.76">
+    <text fill="#00ff41" x="464" y="315">-76dBm</text>
+    <text fill="#7fff00" x="464" y="324">SNR+3.0</text>
+  </g>
+  <!-- N1-N3 mid~(250,330) marginal -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.7">
+    <text fill="#aaff00" x="196" y="325">-85dBm</text>
+    <text fill="#aaff00" x="196" y="334">SNR-2.0</text>
+  </g>
+  <!-- N2-N5 mid~(550,325) -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.7">
+    <text fill="#00ff41" x="548" y="319">-79dBm</text>
+    <text fill="#7fff00" x="548" y="328">SNR+2.5</text>
+  </g>
+  <!-- N4-N6 mid~(350,410) marginal -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.65">
+    <text fill="#aaff00" x="322" y="402">-88dBm</text>
+    <text fill="#aaff00" x="322" y="411">SNR-3.5</text>
+  </g>
+  <!-- N4-N7 mid~(450,405) marginal -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.65">
+    <text fill="#aaff00" x="428" y="399">-86dBm</text>
+    <text fill="#aaff00" x="428" y="408">SNR-1.5</text>
+  </g>
+  <!-- N3-N6 mid~(260,420) weak -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.62">
+    <text fill="#ff9922" x="200" y="415">-91dBm</text>
+    <text fill="#ff6600" x="200" y="424">SNR-5.0</text>
+  </g>
+  <!-- N5-N7 mid~(540,410) -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.62">
+    <text fill="#00ff41" x="540" y="405">-82dBm</text>
+    <text fill="#7fff00" x="540" y="414">SNR+1.0</text>
+  </g>
+  <!-- N6-N8 mid~(350,490) weak -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.58">
+    <text fill="#ff9922" x="306" y="484">-103dBm</text>
+    <text fill="#ff6600" x="306" y="493">SNR-9.5</text>
+  </g>
+  <!-- N7-N8 mid~(450,485) weak -->
+  <g class="mono" font-size="7.5" filter="url(#glow)" opacity="0.58">
+    <text fill="#ff9922" x="432" y="477">-98dBm</text>
+    <text fill="#ff6600" x="432" y="486">SNR-7.0</text>
+  </g>
+  <!-- N1-N2 cross mid~(400,274) -->
+  <g class="mono" font-size="7" opacity="0.45">
+    <text fill="#004d14" x="363" y="271">-95 / SNR-6</text>
+  </g>
+
+  <!-- legend -->
+  <g class="mono" font-size="7.5" opacity="0.75">
+    <rect x="620" y="432" width="90" height="54" rx="3" fill="#010901" stroke="#003b0d" stroke-width="0.8"/>
+    <text fill="#00ff41" x="626" y="444" filter="url(#glow)">&#x25CF; -70~-80 good</text>
+    <text fill="#aaff00" x="626" y="455">&#x25CF; -80~-95 ok</text>
+    <text fill="#ff9922" x="626" y="466">&#x25CF; &gt;-95  weak</text>
+    <text fill="#005a14" x="626" y="479">RSSI / SNR</text>
+  </g>
+
+  <!-- ── ANIMATED signal pulses along links ── -->
+  <style>
+    @keyframes pulse-link {
+      0%   { opacity: 0; }
+      20%  { opacity: 0.9; }
+      80%  { opacity: 0.6; }
+      100% { opacity: 0; }
+    }
+  </style>
+  <!-- pulse dots travelling N0→N1 -->
+  <circle r="3" fill="#00ff41" filter="url(#glow)" opacity="0">
+    <animateMotion dur="2.4s" repeatCount="indefinite" begin="0s">
+      <mpath href="#link-n0-n1"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="3" fill="#00ff41" filter="url(#glow)" opacity="0">
+    <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s">
+      <mpath href="#link-n0-n2"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="1.2s"/>
+  </circle>
+  <circle r="2.5" fill="#7fff00" filter="url(#glow)" opacity="0">
+    <animateMotion dur="3.1s" repeatCount="indefinite" begin="0.6s">
+      <mpath href="#link-n1-n4"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;0.9;0.9;0" dur="3.1s" repeatCount="indefinite" begin="0.6s"/>
+  </circle>
+  <circle r="2.5" fill="#00ff41" filter="url(#glow)" opacity="0">
+    <animateMotion dur="2.8s" repeatCount="indefinite" begin="1.8s">
+      <mpath href="#link-n4-n7"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="1.8s"/>
+  </circle>
+  <circle r="2" fill="#00ff41" filter="url(#glow)" opacity="0">
+    <animateMotion dur="3.5s" repeatCount="indefinite" begin="0.3s">
+      <mpath href="#link-n7-n8"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3.5s" repeatCount="indefinite" begin="0.3s"/>
+  </circle>
+
+  <!-- Hidden paths for animateMotion -->
+  <defs>
+    <path id="link-n0-n1" d="M400,200 L280,280"/>
+    <path id="link-n0-n2" d="M400,200 L520,280"/>
+    <path id="link-n1-n4" d="M280,280 L400,360"/>
+    <path id="link-n4-n7" d="M400,360 L500,450"/>
+    <path id="link-n7-n8" d="M500,450 L400,520"/>
+  </defs>
+
+  <!-- ── NODE ICONS ── -->
+  <!-- Helper: each node = outer ring + inner dot + tiny antenna or chip -->
+
+  <!-- N0 — GATEWAY (larger, crown node) -->
+  <g filter="url(#glow)">
+    <circle cx="400" cy="200" r="14" fill="#010901" stroke="#00ff41" stroke-width="2" opacity="0.9"/>
+    <circle cx="400" cy="200" r="6"  fill="#00ff41" opacity="0.85"/>
+    <!-- antenna up -->
+    <line x1="400" y1="186" x2="400" y2="174" stroke="#00ff41" stroke-width="1.8"/>
+    <circle cx="400" cy="172" r="2.5" fill="#00ff41"/>
+    <!-- label -->
+    <text class="mono" font-size="9" fill="#00ff41" x="416" y="198" opacity="0.8">GW</text>
+    <text class="mono" font-size="7.5" fill="#005a14" x="416" y="208" opacity="0.7">868MHz</text>
+  </g>
+
+  <!-- N1 -->
+  <g filter="url(#glow)" opacity="0.78">
+    <circle cx="280" cy="280" r="10" fill="#010901" stroke="#00ff41" stroke-width="1.5"/>
+    <circle cx="280" cy="280" r="4"  fill="#00ff41"/>
+    <line x1="280" y1="270" x2="280" y2="262" stroke="#00ff41" stroke-width="1.4"/>
+    <circle cx="280" cy="260" r="2" fill="#00ff41"/>
+    <text class="mono" font-size="8" fill="#005a14" x="294" y="283" opacity="0.7">N1</text>
+  </g>
+
+  <!-- N2 -->
+  <g filter="url(#glow)" opacity="0.78">
+    <circle cx="520" cy="280" r="10" fill="#010901" stroke="#00ff41" stroke-width="1.5"/>
+    <circle cx="520" cy="280" r="4"  fill="#00ff41"/>
+    <line x1="520" y1="270" x2="520" y2="262" stroke="#00ff41" stroke-width="1.4"/>
+    <circle cx="520" cy="260" r="2" fill="#00ff41"/>
+    <text class="mono" font-size="8" fill="#005a14" x="534" y="283" opacity="0.7">N2</text>
+  </g>
+
+  <!-- N3 -->
+  <g filter="url(#glow)" opacity="0.7">
+    <circle cx="220" cy="380" r="9" fill="#010901" stroke="#00ff41" stroke-width="1.3"/>
+    <circle cx="220" cy="380" r="3.5" fill="#00ff41"/>
+    <line x1="220" y1="371" x2="220" y2="364" stroke="#00ff41" stroke-width="1.2"/>
+    <circle cx="220" cy="363" r="1.8" fill="#00ff41"/>
+    <text class="mono" font-size="7.5" fill="#005a14" x="233" y="383" opacity="0.65">N3</text>
+  </g>
+
+  <!-- N4 — router/relay (slightly larger) -->
+  <g filter="url(#glow)" opacity="0.85">
+    <circle cx="400" cy="360" r="11" fill="#010901" stroke="#00ff41" stroke-width="1.8"/>
+    <circle cx="400" cy="360" r="4.5" fill="#00ff41"/>
+    <line x1="400" y1="349" x2="400" y2="342" stroke="#00ff41" stroke-width="1.5"/>
+    <circle cx="400" cy="340" r="2.2" fill="#00ff41"/>
+    <text class="mono" font-size="8" fill="#005a14" x="414" y="363" opacity="0.7">N4</text>
+  </g>
+
+  <!-- N5 -->
+  <g filter="url(#glow)" opacity="0.72">
+    <circle cx="580" cy="370" r="9" fill="#010901" stroke="#00ff41" stroke-width="1.3"/>
+    <circle cx="580" cy="370" r="3.5" fill="#00ff41"/>
+    <line x1="580" y1="361" x2="580" y2="354" stroke="#00ff41" stroke-width="1.2"/>
+    <circle cx="580" cy="352" r="1.8" fill="#00ff41"/>
+    <text class="mono" font-size="7.5" fill="#005a14" x="593" y="373" opacity="0.65">N5</text>
+  </g>
+
+  <!-- N6 -->
+  <g filter="url(#glow)" opacity="0.68">
+    <circle cx="300" cy="460" r="9" fill="#010901" stroke="#00ff41" stroke-width="1.3"/>
+    <circle cx="300" cy="460" r="3.5" fill="#00ff41"/>
+    <line x1="300" y1="451" x2="300" y2="444" stroke="#00ff41" stroke-width="1.2"/>
+    <circle cx="300" cy="442" r="1.8" fill="#00ff41"/>
+    <text class="mono" font-size="7.5" fill="#005a14" x="313" y="463" opacity="0.65">N6</text>
+  </g>
+
+  <!-- N7 -->
+  <g filter="url(#glow)" opacity="0.68">
+    <circle cx="500" cy="450" r="9" fill="#010901" stroke="#00ff41" stroke-width="1.3"/>
+    <circle cx="500" cy="450" r="3.5" fill="#00ff41"/>
+    <line x1="500" y1="441" x2="500" y2="434" stroke="#00ff41" stroke-width="1.2"/>
+    <circle cx="500" cy="432" r="1.8" fill="#00ff41"/>
+    <text class="mono" font-size="7.5" fill="#005a14" x="513" y="453" opacity="0.65">N7</text>
+  </g>
+
+  <!-- N8 — edge node (dimmer) -->
+  <g filter="url(#glow)" opacity="0.55">
+    <circle cx="400" cy="520" r="8" fill="#010901" stroke="#00aa22" stroke-width="1.2"/>
+    <circle cx="400" cy="520" r="3" fill="#00aa22"/>
+    <line x1="400" y1="512" x2="400" y2="506" stroke="#00aa22" stroke-width="1.1"/>
+    <circle cx="400" cy="504" r="1.5" fill="#00aa22"/>
+    <text class="mono" font-size="7" fill="#004411" x="412" y="523" opacity="0.6">N8</text>
+  </g>
+
+  <!-- ── LoRa label + freq band ── -->
+  <text class="mono" font-size="11" fill="#003b0d" x="400" y="558" text-anchor="middle" opacity="0.55" filter="url(#glow)">LoRa · Meshtastic · SF12 BW125</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  SHA256 hash strings floating          -->
+  <!-- ═══════════════════════════════════════ -->
+  <text class="mono" font-size="9.5" fill="#004d14" x="110" y="30"  opacity="0.5">a3f8c2d1e9b047f63c5a8210d4e7b9f0123456789abcdef</text>
+  <text class="mono" font-size="9.5" fill="#004d14" x="60"  y="580" opacity="0.5">9e1b4a7f2c8d30e5f64a129b8c3d7e0f1a2b3c4d5e6f70</text>
+  <text class="mono" font-size="9"   fill="#003b0d" x="400" y="596" opacity="0.4" text-anchor="middle">$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/lewFBTQfFZW5p/VWa</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  HUD CORNERS                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <g fill="none" stroke="#00ff41" stroke-width="1.2" opacity="0.45">
+    <polyline points="8,8 8,38 38,38"/>
+    <polyline points="792,8 792,38 762,38"/>
+    <polyline points="8,592 8,562 38,562"/>
+    <polyline points="792,592 792,562 762,562"/>
+  </g>
+  <text class="mono" font-size="8.5" fill="#005a14" x="46"  y="20">0x00</text>
+  <text class="mono" font-size="8.5" fill="#005a14" x="750" y="20" text-anchor="end">EOF</text>
+  <text class="mono" font-size="8.5" fill="#005a14" x="46"  y="596">NUL</text>
+  <text class="mono" font-size="8.5" fill="#005a14" x="750" y="596" text-anchor="end">0xFF</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  VIGNETTES                              -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect width="800" height="600" fill="url(#vig-v)"/>
+  <rect width="800" height="600" fill="url(#vig-h)"/>
+</svg>

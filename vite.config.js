@@ -7,7 +7,10 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), basicSsl()],
+  plugins: [
+    vue(), 
+    //vueDevTools(), 
+    basicSsl()],
   base: '/ml_kem768-X25519/',
   resolve: {
     alias: {

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="800" viewBox="0 0 480 800">
+
+  <defs>
+    <!-- Gradientes -->
+    <radialGradient id="glow-top" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#27c368" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0d0f0d" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Scan vertical animado -->
+    <linearGradient id="scan-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#27c368" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#27c368" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#27c368" stop-opacity="0"/>
+      <animateTransform 
+        attributeName="gradientTransform"
+        type="translate"
+        from="0 -1"
+        to="0 1"
+        dur="6s"
+        repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- Glow -->
+    <filter id="green-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="soft-glow">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+
+  </defs>
+
+  <!-- FUNDO -->
+  <rect width="480" height="800" fill="#0d0f0d"/>
+  <rect width="480" height="800" fill="url(#glow-top)"/>
+
+  <!-- CAMADA PROFUNDIDADE FUNDO (mais lenta) -->
+  <g opacity="0.08">
+    <animateTransform attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="0 -30"
+      dur="20s"
+      repeatCount="indefinite"/>
+    <circle cx="100" cy="200" r="2" fill="#27c368"/>
+    <circle cx="380" cy="600" r="2" fill="#27c368"/>
+    <circle cx="240" cy="400" r="2" fill="#27c368"/>
+  </g>
+
+  <!-- LINHA COM PULSO -->
+  <g filter="url(#green-glow)">
+    <polyline 
+      id="pulsePath"
+      points="20,400 120,400 160,370 200,430 260,400 340,400"
+      fill="none"
+      stroke="#27c368"
+      stroke-width="1.2"/>
+
+    <!-- Bolinha andando -->
+    <circle r="4" fill="#27c368">
+      <animateMotion dur="4s" repeatCount="indefinite">
+        <mpath href="#pulsePath"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- SCAN VERTICAL -->
+  <rect width="480" height="800" fill="url(#scan-gradient)" opacity="0.4"/>
+
+  <!-- RADAR -->
+  <g transform="translate(380,650)">
+    <circle r="40" stroke="#27c368" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <circle r="25" stroke="#27c368" stroke-width="0.4" fill="none" opacity="0.3"/>
+
+    <!-- Ponteiro girando -->
+    <g filter="url(#green-glow)">
+      <line x1="0" y1="0" x2="35" y2="0" stroke="#27c368" stroke-width="2"/>
+      <animateTransform 
+        attributeName="transform"
+        type="rotate"
+        from="0"
+        to="360"
+        dur="3s"
+        repeatCount="indefinite"/>
+    </g>
+
+    <circle r="3" fill="#27c368"/>
+  </g>
+
+  <!-- CAMADA PROFUNDIDADE FRENTE (mais rápida) -->
+  <g opacity="0.15">
+    <animateTransform attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="0 -60"
+      dur="12s"
+      repeatCount="indefinite"/>
+    <circle cx="50" cy="750" r="1.5" fill="#27c368"/>
+    <circle cx="420" cy="500" r="1.5" fill="#27c368"/>
+  </g>
+
+</svg>

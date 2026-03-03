@@ -13,6 +13,18 @@ const hamburguerLine = ref(false);
 const showBackButton = ref(false);
 const showMenuButton = ref(true);
 
+const isFullscreen = ref(false)
+
+const toggleFullscreen = async () => {
+  if (!document.fullscreenElement) {
+    await document.documentElement.requestFullscreen()
+    isFullscreen.value = true
+  } else {
+    await document.exitFullscreen()
+    isFullscreen.value = false
+  }
+}
+
 Emitter.on('active-btn-back', () => {
   showBackButton.value = true
   showMenuButton.value = false
@@ -44,11 +56,11 @@ const toogleMenu = () => {
         <i class="ri-arrow-left-long-line"></i>
       </div>
     </div>
-    <div class="center">
+    <div class="center" @click="toggleFullscreen">
       <img src="@/assets/logo3.png" alt="logo">
     </div>
     <div class="right">
-      <span>{{ perfil.nickname }}</span>
+      <!-- <span>{{ perfil.nickname }}</span> -->
       <RouterLink to="/myPerfil" class="avatar">
         <img :src="perfil.imageProfile" alt="avatar">
       </RouterLink>

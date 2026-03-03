@@ -3,18 +3,18 @@ import { onMounted } from 'vue';
 import { Emitter } from '@/utils/Emitter';
 
 onMounted(() => {
-  Emitter.emit('active-btn-menu')
+  Emitter.emit('active-btn-back')
 })
 </script>
 
 <template>
-  <main class="home page">
-    <h1>ML_KEM + X25519</h1>
+  <main class="conversation page">
+    conversa
   </main>
 </template>
 
 <style scoped>
-.home {
+.conversation {
   padding: var(--p);
 }
 </style>

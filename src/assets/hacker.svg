@@ -1,0 +1,376 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      @keyframes fall {
+        0% { opacity: 0; transform: translateY(-20px); }
+        10% { opacity: 1; }
+        90% { opacity: 0.6; }
+        100% { opacity: 0; transform: translateY(600px); }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+      }
+      @keyframes glitch {
+        0%, 100% { transform: translate(0); }
+        20% { transform: translate(-3px, 1px); }
+        40% { transform: translate(3px, -1px); }
+        60% { transform: translate(-2px, 2px); }
+        80% { transform: translate(2px, -2px); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 0.3; }
+      }
+      .char { font-family: 'Courier New', monospace; fill: #00ff41; font-size: 14px; }
+      .char-dim { fill: #003b0d; }
+      .char-bright { fill: #7fff00; filter: url(#glow); }
+      .title { font-family: 'Courier New', monospace; fill: #00ff41; font-size: 42px; font-weight: bold; letter-spacing: 8px; filter: url(#glow); animation: glitch 4s infinite; }
+      .subtitle { font-family: 'Courier New', monospace; fill: #00aa2a; font-size: 14px; letter-spacing: 4px; }
+      .prompt { font-family: 'Courier New', monospace; fill: #00ff41; font-size: 13px; }
+      .cursor { fill: #00ff41; animation: blink 1s infinite; }
+    </style>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="crt">
+      <feColorMatrix type="saturate" values="1.5"/>
+    </filter>
+    <linearGradient id="vignette" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.6"/>
+      <stop offset="20%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="80%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#000d00"/>
+
+  <!-- Matrix rain characters -->
+  <!-- Column 1 -->
+  <text class="char char-dim" x="20" y="50" opacity="0.3">1</text>
+  <text class="char char-dim" x="20" y="70" opacity="0.4">0</text>
+  <text class="char" x="20" y="90" opacity="0.9">1</text>
+  <text class="char char-bright" x="20" y="110">0</text>
+  <text class="char char-dim" x="20" y="130" opacity="0.5">1</text>
+  <text class="char char-dim" x="20" y="150" opacity="0.3">1</text>
+  <text class="char char-dim" x="20" y="170" opacity="0.2">0</text>
+
+  <text class="char char-dim" x="20" y="350" opacity="0.4">A</text>
+  <text class="char" x="20" y="370" opacity="0.8">F</text>
+  <text class="char char-bright" x="20" y="390">3</text>
+  <text class="char char-dim" x="20" y="410" opacity="0.5">C</text>
+  <text class="char char-dim" x="20" y="430" opacity="0.3">9</text>
+
+  <!-- Column 2 -->
+  <text class="char char-dim" x="46" y="100" opacity="0.3">7</text>
+  <text class="char" x="46" y="120" opacity="0.7">E</text>
+  <text class="char char-bright" x="46" y="140">B</text>
+  <text class="char char-dim" x="46" y="160" opacity="0.5">2</text>
+  <text class="char char-dim" x="46" y="180" opacity="0.2">D</text>
+  <text class="char char-dim" x="46" y="200" opacity="0.15">5</text>
+
+  <text class="char char-dim" x="46" y="400" opacity="0.35">F</text>
+  <text class="char" x="46" y="420" opacity="0.75">1</text>
+  <text class="char char-bright" x="46" y="440">A</text>
+  <text class="char char-dim" x="46" y="460" opacity="0.4">9</text>
+
+  <!-- Column 3 -->
+  <text class="char char-dim" x="72" y="80" opacity="0.4">C</text>
+  <text class="char char-bright" x="72" y="100">4</text>
+  <text class="char char-dim" x="72" y="120" opacity="0.6">7</text>
+  <text class="char char-dim" x="72" y="140" opacity="0.3">F</text>
+  <text class="char char-dim" x="72" y="160" opacity="0.2">2</text>
+
+  <text class="char char-dim" x="72" y="380" opacity="0.4">0</text>
+  <text class="char" x="72" y="400" opacity="0.8">1</text>
+  <text class="char char-bright" x="72" y="420">E</text>
+  <text class="char char-dim" x="72" y="440" opacity="0.5">3</text>
+  <text class="char char-dim" x="72" y="460" opacity="0.3">A</text>
+  <text class="char char-dim" x="72" y="480" opacity="0.2">5</text>
+
+  <!-- Right side columns -->
+  <!-- Column R1 -->
+  <text class="char char-dim" x="716" y="60" opacity="0.3">9</text>
+  <text class="char char-bright" x="716" y="80">F</text>
+  <text class="char char-dim" x="716" y="100" opacity="0.6">2</text>
+  <text class="char char-dim" x="716" y="120" opacity="0.35">A</text>
+  <text class="char char-dim" x="716" y="140" opacity="0.2">D</text>
+
+  <text class="char char-dim" x="716" y="360" opacity="0.4">7</text>
+  <text class="char" x="716" y="380" opacity="0.8">C</text>
+  <text class="char char-bright" x="716" y="400">1</text>
+  <text class="char char-dim" x="716" y="420" opacity="0.5">B</text>
+  <text class="char char-dim" x="716" y="440" opacity="0.3">4</text>
+  <text class="char char-dim" x="716" y="460" opacity="0.2">E</text>
+
+  <!-- Column R2 -->
+  <text class="char char-dim" x="742" y="110" opacity="0.4">0</text>
+  <text class="char char-bright" x="742" y="130">6</text>
+  <text class="char char-dim" x="742" y="150" opacity="0.55">9</text>
+  <text class="char char-dim" x="742" y="170" opacity="0.3">F</text>
+  <text class="char char-dim" x="742" y="190" opacity="0.2">A</text>
+
+  <text class="char char-dim" x="742" y="420" opacity="0.35">3</text>
+  <text class="char" x="742" y="440" opacity="0.75">D</text>
+  <text class="char char-bright" x="742" y="460">8</text>
+  <text class="char char-dim" x="742" y="480" opacity="0.4">C</text>
+
+  <!-- Column R3 -->
+  <text class="char char-dim" x="768" y="90" opacity="0.3">B</text>
+  <text class="char" x="768" y="110" opacity="0.7">5</text>
+  <text class="char char-bright" x="768" y="130">E</text>
+  <text class="char char-dim" x="768" y="150" opacity="0.5">2</text>
+  <text class="char char-dim" x="768" y="170" opacity="0.3">7</text>
+  <text class="char char-dim" x="768" y="190" opacity="0.15">F</text>
+
+  <text class="char char-dim" x="768" y="380" opacity="0.4">A</text>
+  <text class="char" x="768" y="400" opacity="0.8">1</text>
+  <text class="char char-bright" x="768" y="420">9</text>
+  <text class="char char-dim" x="768" y="440" opacity="0.5">C</text>
+  <text class="char char-dim" x="768" y="460" opacity="0.3">4</text>
+
+  <!-- Central skull icon using paths -->
+  <g transform="translate(310, 210)" filter="url(#glow)" opacity="0.15">
+    <!-- Skull outline -->
+    <ellipse cx="90" cy="70" rx="55" ry="60" fill="none" stroke="#00ff41" stroke-width="1.5"/>
+    <rect x="50" y="110" width="80" height="30" rx="5" fill="none" stroke="#00ff41" stroke-width="1.5"/>
+    <!-- Teeth -->
+    <line x1="62" y1="110" x2="62" y2="130" stroke="#00ff41" stroke-width="1.2"/>
+    <line x1="76" y1="110" x2="76" y2="130" stroke="#00ff41" stroke-width="1.2"/>
+    <line x1="90" y1="110" x2="90" y2="130" stroke="#00ff41" stroke-width="1.2"/>
+    <line x1="104" y1="110" x2="104" y2="130" stroke="#00ff41" stroke-width="1.2"/>
+    <line x1="118" y1="110" x2="118" y2="130" stroke="#00ff41" stroke-width="1.2"/>
+    <!-- Eyes -->
+    <ellipse cx="68" cy="70" rx="16" ry="18" fill="#00ff41" opacity="0.3"/>
+    <ellipse cx="112" cy="70" rx="16" ry="18" fill="#00ff41" opacity="0.3"/>
+    <!-- Nose -->
+    <path d="M85 95 L90 85 L95 95 Z" fill="none" stroke="#00ff41" stroke-width="1.2"/>
+  </g>
+
+  <!-- Terminal box -->
+  <rect x="130" y="180" width="540" height="240" rx="4" fill="#000d00" stroke="#00ff41" stroke-width="1.5" opacity="0.9"/>
+  <rect x="130" y="180" width="540" height="28" rx="4" fill="#001a00"/>
+  <rect x="130" y="194" width="540" height="14" fill="#001a00"/>
+  <!-- Terminal dots -->
+  <circle cx="152" cy="194" r="6" fill="#ff5f56"/>
+  <circle cx="174" cy="194" r="6" fill="#ffbd2e"/>
+  <circle cx="196" cy="194" r="6" fill="#27c93f"/>
+  <!-- Terminal title -->
+  <text x="400" y="199" text-anchor="middle" font-family="Courier New" font-size="11" fill="#00aa2a">root@darknet:~</text>
+
+  <!-- Main title - HACKER -->
+  <text class="title" x="400" y="290" text-anchor="middle" filter="url(#glow)">HACKER</text>
+
+  <!-- Glitch layers -->
+  <text font-family="Courier New" font-size="42px" font-weight="bold" letter-spacing="8px" x="400" y="290" text-anchor="middle" fill="#ff0040" opacity="0.15" transform="translate(-4, 0)">HACKER</text>
+  <text font-family="Courier New" font-size="42px" font-weight="bold" letter-spacing="8px" x="400" y="290" text-anchor="middle" fill="#0040ff" opacity="0.15" transform="translate(4, 0)">HACKER</text>
+
+  <!-- Subtitle -->
+  <text class="subtitle" x="400" y="320" text-anchor="middle">&gt;&gt; ACCESS GRANTED &lt;&lt;</text>
+
+  <!-- Terminal lines -->
+  <text class="prompt" x="150" y="360">[root@system]# <tspan fill="#ffffff">whoami</tspan></text>
+  <text class="prompt" x="150" y="380" fill="#00cc33">anonymous</text>
+  <text class="prompt" x="150" y="405">[root@system]# <tspan fill="#ffffff">cat /etc/shadow</tspan></text>
+  <text class="prompt" x="150" y="425" fill="#00cc33">decrypting... ██████████ 100%</text>
+  <text class="prompt" x="150" y="450">[root@system]# <tspan fill="#ffffff">./exploit.sh --target all</tspan></text>
+  <text class="prompt" x="150" y="470" fill="#7fff00">ACCESS_LEVEL: ROOT ■ STATUS: ONLINE ■ TRACE: NONE</text>
+
+  <!-- Blinking cursor -->
+  <rect class="cursor" x="150" y="483" width="9" height="14" rx="1"/>
+
+  <!-- Bottom bar -->
+  <rect x="130" y="438" width="540" height="1" fill="#00ff41" opacity="0.3"/>
+
+  <!-- Binary decorative lines -->
+  <text font-family="Courier New" font-size="9" fill="#003b0d" x="130" y="560">
+    01001000 01000001 01000011 01001011 01000101 01010010 00100000 01010011 01011001 01010011 01010100 01000101 01001101
+  </text>
+  <text font-family="Courier New" font-size="9" fill="#003b0d" x="130" y="575">
+    10110100 11001010 00110011 10110010 01001101 11001011 00110011 10110010 11001010 00110011 10110010 01001101 11001011
+  </text>
+
+  <!-- Corner decorations -->
+  <g fill="none" stroke="#00ff41" stroke-width="1.5" opacity="0.7">
+    <polyline points="10,10 10,40 40,40"/>
+    <polyline points="790,10 790,40 760,40"/>
+    <polyline points="10,590 10,560 40,560"/>
+    <polyline points="790,590 790,560 760,560"/>
+  </g>
+
+  <!-- Coordinate text corners -->
+  <text font-family="Courier New" font-size="9" fill="#007a1e" x="15" y="58">00:00:00</text>
+  <text font-family="Courier New" font-size="9" fill="#007a1e" x="700" y="58">127.0.0.1</text>
+  <text font-family="Courier New" font-size="9" fill="#007a1e" x="15" y="598">SYS:OK</text>
+  <text font-family="Courier New" font-size="9" fill="#007a1e" x="700" y="598">ENC:AES-256</text>
+
+  <!-- Vignette overlay -->
+  <rect width="800" height="600" fill="url(#vignette)" opacity="0.5"/>
+
+  <!-- CRT scanlines effect -->
+  <rect width="800" height="600" fill="url(#scanlines)" opacity="0.04"/>
+
+  <!-- Subtle horizontal scan lines -->
+  <g opacity="0.03">
+    <rect y="0" width="800" height="1" fill="#00ff41"/>
+    <rect y="4" width="800" height="1" fill="#00ff41"/>
+    <rect y="8" width="800" height="1" fill="#00ff41"/>
+    <rect y="12" width="800" height="1" fill="#00ff41"/>
+    <rect y="16" width="800" height="1" fill="#00ff41"/>
+    <rect y="20" width="800" height="1" fill="#00ff41"/>
+    <rect y="24" width="800" height="1" fill="#00ff41"/>
+    <rect y="28" width="800" height="1" fill="#00ff41"/>
+    <rect y="32" width="800" height="1" fill="#00ff41"/>
+    <rect y="36" width="800" height="1" fill="#00ff41"/>
+    <rect y="40" width="800" height="1" fill="#00ff41"/>
+    <rect y="44" width="800" height="1" fill="#00ff41"/>
+    <rect y="48" width="800" height="1" fill="#00ff41"/>
+    <rect y="52" width="800" height="1" fill="#00ff41"/>
+    <rect y="56" width="800" height="1" fill="#00ff41"/>
+    <rect y="60" width="800" height="1" fill="#00ff41"/>
+    <rect y="64" width="800" height="1" fill="#00ff41"/>
+    <rect y="68" width="800" height="1" fill="#00ff41"/>
+    <rect y="72" width="800" height="1" fill="#00ff41"/>
+    <rect y="76" width="800" height="1" fill="#00ff41"/>
+    <rect y="80" width="800" height="1" fill="#00ff41"/>
+    <rect y="84" width="800" height="1" fill="#00ff41"/>
+    <rect y="88" width="800" height="1" fill="#00ff41"/>
+    <rect y="92" width="800" height="1" fill="#00ff41"/>
+    <rect y="96" width="800" height="1" fill="#00ff41"/>
+    <rect y="100" width="800" height="1" fill="#00ff41"/>
+    <rect y="104" width="800" height="1" fill="#00ff41"/>
+    <rect y="108" width="800" height="1" fill="#00ff41"/>
+    <rect y="112" width="800" height="1" fill="#00ff41"/>
+    <rect y="116" width="800" height="1" fill="#00ff41"/>
+    <rect y="120" width="800" height="1" fill="#00ff41"/>
+    <rect y="124" width="800" height="1" fill="#00ff41"/>
+    <rect y="128" width="800" height="1" fill="#00ff41"/>
+    <rect y="132" width="800" height="1" fill="#00ff41"/>
+    <rect y="136" width="800" height="1" fill="#00ff41"/>
+    <rect y="140" width="800" height="1" fill="#00ff41"/>
+    <rect y="144" width="800" height="1" fill="#00ff41"/>
+    <rect y="148" width="800" height="1" fill="#00ff41"/>
+    <rect y="152" width="800" height="1" fill="#00ff41"/>
+    <rect y="156" width="800" height="1" fill="#00ff41"/>
+    <rect y="160" width="800" height="1" fill="#00ff41"/>
+    <rect y="164" width="800" height="1" fill="#00ff41"/>
+    <rect y="168" width="800" height="1" fill="#00ff41"/>
+    <rect y="172" width="800" height="1" fill="#00ff41"/>
+    <rect y="176" width="800" height="1" fill="#00ff41"/>
+    <rect y="180" width="800" height="1" fill="#00ff41"/>
+    <rect y="184" width="800" height="1" fill="#00ff41"/>
+    <rect y="188" width="800" height="1" fill="#00ff41"/>
+    <rect y="192" width="800" height="1" fill="#00ff41"/>
+    <rect y="196" width="800" height="1" fill="#00ff41"/>
+    <rect y="200" width="800" height="1" fill="#00ff41"/>
+    <rect y="204" width="800" height="1" fill="#00ff41"/>
+    <rect y="208" width="800" height="1" fill="#00ff41"/>
+    <rect y="212" width="800" height="1" fill="#00ff41"/>
+    <rect y="216" width="800" height="1" fill="#00ff41"/>
+    <rect y="220" width="800" height="1" fill="#00ff41"/>
+    <rect y="224" width="800" height="1" fill="#00ff41"/>
+    <rect y="228" width="800" height="1" fill="#00ff41"/>
+    <rect y="232" width="800" height="1" fill="#00ff41"/>
+    <rect y="236" width="800" height="1" fill="#00ff41"/>
+    <rect y="240" width="800" height="1" fill="#00ff41"/>
+    <rect y="244" width="800" height="1" fill="#00ff41"/>
+    <rect y="248" width="800" height="1" fill="#00ff41"/>
+    <rect y="252" width="800" height="1" fill="#00ff41"/>
+    <rect y="256" width="800" height="1" fill="#00ff41"/>
+    <rect y="260" width="800" height="1" fill="#00ff41"/>
+    <rect y="264" width="800" height="1" fill="#00ff41"/>
+    <rect y="268" width="800" height="1" fill="#00ff41"/>
+    <rect y="272" width="800" height="1" fill="#00ff41"/>
+    <rect y="276" width="800" height="1" fill="#00ff41"/>
+    <rect y="280" width="800" height="1" fill="#00ff41"/>
+    <rect y="284" width="800" height="1" fill="#00ff41"/>
+    <rect y="288" width="800" height="1" fill="#00ff41"/>
+    <rect y="292" width="800" height="1" fill="#00ff41"/>
+    <rect y="296" width="800" height="1" fill="#00ff41"/>
+    <rect y="300" width="800" height="1" fill="#00ff41"/>
+    <rect y="304" width="800" height="1" fill="#00ff41"/>
+    <rect y="308" width="800" height="1" fill="#00ff41"/>
+    <rect y="312" width="800" height="1" fill="#00ff41"/>
+    <rect y="316" width="800" height="1" fill="#00ff41"/>
+    <rect y="320" width="800" height="1" fill="#00ff41"/>
+    <rect y="324" width="800" height="1" fill="#00ff41"/>
+    <rect y="328" width="800" height="1" fill="#00ff41"/>
+    <rect y="332" width="800" height="1" fill="#00ff41"/>
+    <rect y="336" width="800" height="1" fill="#00ff41"/>
+    <rect y="340" width="800" height="1" fill="#00ff41"/>
+    <rect y="344" width="800" height="1" fill="#00ff41"/>
+    <rect y="348" width="800" height="1" fill="#00ff41"/>
+    <rect y="352" width="800" height="1" fill="#00ff41"/>
+    <rect y="356" width="800" height="1" fill="#00ff41"/>
+    <rect y="360" width="800" height="1" fill="#00ff41"/>
+    <rect y="364" width="800" height="1" fill="#00ff41"/>
+    <rect y="368" width="800" height="1" fill="#00ff41"/>
+    <rect y="372" width="800" height="1" fill="#00ff41"/>
+    <rect y="376" width="800" height="1" fill="#00ff41"/>
+    <rect y="380" width="800" height="1" fill="#00ff41"/>
+    <rect y="384" width="800" height="1" fill="#00ff41"/>
+    <rect y="388" width="800" height="1" fill="#00ff41"/>
+    <rect y="392" width="800" height="1" fill="#00ff41"/>
+    <rect y="396" width="800" height="1" fill="#00ff41"/>
+    <rect y="400" width="800" height="1" fill="#00ff41"/>
+    <rect y="404" width="800" height="1" fill="#00ff41"/>
+    <rect y="408" width="800" height="1" fill="#00ff41"/>
+    <rect y="412" width="800" height="1" fill="#00ff41"/>
+    <rect y="416" width="800" height="1" fill="#00ff41"/>
+    <rect y="420" width="800" height="1" fill="#00ff41"/>
+    <rect y="424" width="800" height="1" fill="#00ff41"/>
+    <rect y="428" width="800" height="1" fill="#00ff41"/>
+    <rect y="432" width="800" height="1" fill="#00ff41"/>
+    <rect y="436" width="800" height="1" fill="#00ff41"/>
+    <rect y="440" width="800" height="1" fill="#00ff41"/>
+    <rect y="444" width="800" height="1" fill="#00ff41"/>
+    <rect y="448" width="800" height="1" fill="#00ff41"/>
+    <rect y="452" width="800" height="1" fill="#00ff41"/>
+    <rect y="456" width="800" height="1" fill="#00ff41"/>
+    <rect y="460" width="800" height="1" fill="#00ff41"/>
+    <rect y="464" width="800" height="1" fill="#00ff41"/>
+    <rect y="468" width="800" height="1" fill="#00ff41"/>
+    <rect y="472" width="800" height="1" fill="#00ff41"/>
+    <rect y="476" width="800" height="1" fill="#00ff41"/>
+    <rect y="480" width="800" height="1" fill="#00ff41"/>
+    <rect y="484" width="800" height="1" fill="#00ff41"/>
+    <rect y="488" width="800" height="1" fill="#00ff41"/>
+    <rect y="492" width="800" height="1" fill="#00ff41"/>
+    <rect y="496" width="800" height="1" fill="#00ff41"/>
+    <rect y="500" width="800" height="1" fill="#00ff41"/>
+    <rect y="504" width="800" height="1" fill="#00ff41"/>
+    <rect y="508" width="800" height="1" fill="#00ff41"/>
+    <rect y="512" width="800" height="1" fill="#00ff41"/>
+    <rect y="516" width="800" height="1" fill="#00ff41"/>
+    <rect y="520" width="800" height="1" fill="#00ff41"/>
+    <rect y="524" width="800" height="1" fill="#00ff41"/>
+    <rect y="528" width="800" height="1" fill="#00ff41"/>
+    <rect y="532" width="800" height="1" fill="#00ff41"/>
+    <rect y="536" width="800" height="1" fill="#00ff41"/>
+    <rect y="540" width="800" height="1" fill="#00ff41"/>
+    <rect y="544" width="800" height="1" fill="#00ff41"/>
+    <rect y="548" width="800" height="1" fill="#00ff41"/>
+    <rect y="552" width="800" height="1" fill="#00ff41"/>
+    <rect y="556" width="800" height="1" fill="#00ff41"/>
+    <rect y="560" width="800" height="1" fill="#00ff41"/>
+    <rect y="564" width="800" height="1" fill="#00ff41"/>
+    <rect y="568" width="800" height="1" fill="#00ff41"/>
+    <rect y="572" width="800" height="1" fill="#00ff41"/>
+    <rect y="576" width="800" height="1" fill="#00ff41"/>
+    <rect y="580" width="800" height="1" fill="#00ff41"/>
+    <rect y="584" width="800" height="1" fill="#00ff41"/>
+    <rect y="588" width="800" height="1" fill="#00ff41"/>
+    <rect y="592" width="800" height="1" fill="#00ff41"/>
+    <rect y="596" width="800" height="1" fill="#00ff41"/>
+  </g>
+</svg>
