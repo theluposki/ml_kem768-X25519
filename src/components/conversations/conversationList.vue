@@ -1,64 +1,18 @@
 <script setup>
 import { ref } from 'vue'
 import ConversationItem from './conversationItem.vue'
+import ListContatos from '@/constants/listaContatos.js'
 
-const list = ref([
-  {
-    id: window.crypto.randomUUID(),
-    nickname: 'Ana',
-    imageProfile: 'https://i.pravatar.cc/1024?img=37',
-    status: 'busy'
-  },
-  {
-    id: window.crypto.randomUUID(),
-    nickname: 'Roger',
-    imageProfile: 'https://i.pravatar.cc/1024?img=34',
-    status: 'online'
-  },
-  {
-    id: window.crypto.randomUUID(),
-    nickname: 'Geovana',
-    imageProfile: 'https://i.pravatar.cc/1024?img=38',
-    status: 'offline'
-  },
-  {
-    id: window.crypto.randomUUID(),
-    nickname: 'Sabrina',
-    imageProfile: 'https://i.pravatar.cc/1024?img=40',
-    status: 'away'
-  },
-  {
-    id: window.crypto.randomUUID(),
-    nickname: 'Natan',
-    imageProfile: 'https://i.pravatar.cc/1024?img=12',
-    status: 'away'
-  },
-  {
-    id: window.crypto.randomUUID(),
-    nickname: 'Rogerio',
-    imageProfile: 'https://i.pravatar.cc/1024?img=11',
-    status: 'away'
-  },
-    {
-    id: window.crypto.randomUUID(),
-    nickname: 'Thiago',
-    imageProfile: 'https://i.pravatar.cc/1024?img=15',
-    status: 'away'
-  },
-      {
-    id: window.crypto.randomUUID(),
-    nickname: 'Mia Kalifa',
-    imageProfile: 'https://i.pravatar.cc/1024?img=41',
-    status: 'away'
-  },
-
-])
+const list = ref(ListContatos)
 </script>
 
 <template>
+  <div class="emptyList">
+    <span v-if="list.length === 0">Adicione contatos para iniciar conversas.</span>
+  </div>
   <ul class="list-conversations">
     <ConversationItem v-for="item in list" :key="item.id" :id="item.id" :imageProfile="item.imageProfile" :nickname="item.nickname"
-      :status="item.status" />
+     :hybridKeys="item.hybridKeys" :status="item.status" />
   </ul>
 </template>
 
@@ -75,6 +29,14 @@ const list = ref([
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.emptyList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: var(--p);
 }
 
 </style>

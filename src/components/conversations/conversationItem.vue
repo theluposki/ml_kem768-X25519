@@ -18,6 +18,10 @@ const props = defineProps({
   status: {
     type: String,
     default: 'offline'
+  },
+  hybridKeys: {
+    type: Object,
+    default: []
   }
 })
 
@@ -33,7 +37,11 @@ const goChat = () => {
 <template>
   <li class="conversationItem" @click="goChat">
     <Avatar :imageProfile="imageProfile" :status="status" />
-    <span>{{ nickname }}</span>
+    <div class="text">
+      <span>{{ nickname }}</span>
+      <span class="keys mlkem">{{ hybridKeys?.publicKey?.mlkem.substring(0, 45) }}</span>
+      <span class="keys x255">{{ hybridKeys?.publicKey?.x25519.substring(0, 20) }}</span>
+    </div>
   </li>
 </template>
 
@@ -52,6 +60,27 @@ const goChat = () => {
 
   &:active {
     scale: .95;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.keys {
+  display: flex;
+  align-self: flex-end;
+  
+
+  &.mlkem {
+    color: var(--violet3);
+    font-size: 8px;
+  }
+
+  &.x255 {
+    color: var(--green4);
+    font-size: 6px;
   }
 }
 </style>

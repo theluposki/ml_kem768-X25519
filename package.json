@@ -12,6 +12,7 @@
   "dependencies": {
     "@noble/curves": "^2.0.1",
     "@noble/post-quantum": "^0.5.4",
+    "dexie": "^4.3.0",
     "pinia": "^3.0.4",
     "remixicon": "^4.9.1",
     "vue": "^3.5.29",

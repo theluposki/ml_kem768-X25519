@@ -1,8 +1,10 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Emitter } from '@/utils/Emitter';
 import SearchInput from '@/components/input.vue'
 import listConversation from '@/components/conversations/conversationList.vue';
+
+const search = ref('')
 
 onMounted(() => {
   Emitter.emit('active-btn-menu')
