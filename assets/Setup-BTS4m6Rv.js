@@ -1,0 +1,1 @@
+import{_ as e,o as t,E as s,c as a,e as o}from"./index-CnOWrUmH.js";const c={class:"setup page"},n={__name:"Setup",setup(_){return t(()=>{s.emit("active-btn-menu")}),(p,r)=>(o(),a("main",c," Configurações "))}},m=e(n,[["__scopeId","data-v-91ffc9b9"]]);export{m as default};
