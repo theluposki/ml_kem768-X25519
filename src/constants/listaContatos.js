@@ -24,6 +24,46 @@ async function generateAndSaveKeys() {
 
 // generateAndSaveKeys();
 
+
+
+/**
+ * @typedef {'online' | 'offline' | 'busy' | 'away'} UserStatus
+ * Status de disponibilidade do usuário.
+ */
+
+/**
+ * @typedef {Object} AsymmetricKeyPair
+ * Par de chaves assimétricas para um algoritmo específico.
+ * @property {string} mlkem - Chave no formato ML-KEM (Module-Lattice-Based Key Encapsulation Mechanism), codificada em Base64url.
+ * @property {string} x25519 - Chave no formato X25519 (Diffie-Hellman sobre Curve25519), codificada em Base64url.
+ */
+
+/**
+ * @typedef {Object} HybridKeyPair
+ * Par de chaves híbridas combinando ML-KEM (pós-quântico) e X25519 (curva elíptica).
+ * @property {AsymmetricKeyPair} publicKey - Chaves públicas do par híbrido.
+ * @property {AsymmetricKeyPair} privateKey - Chaves privadas do par híbrido.
+ */
+
+/**
+ * @typedef {Object} User
+ * Representa um usuário do sistema com suas informações de perfil e chaves criptográficas.
+ * @property {string} id - Identificador único do usuário (UUID v4 gerado via `crypto.randomUUID()`).
+ * @property {string} nickname - Nome de exibição do usuário.
+ * @property {string} imageProfile - URL da imagem de perfil do usuário.
+ * @property {UserStatus} status - Status atual de disponibilidade do usuário.
+ * @property {HybridKeyPair} hybridKeys - Par de chaves híbridas para criptografia pós-quântica.
+ */
+
+/**
+ * Lista de usuários do sistema.
+ * Cada usuário possui um par de chaves híbridas (ML-KEM + X25519) para suporte
+ * à criptografia pós-quântica.
+ *
+ * @type {User[]}
+ */
+
+
 export default [
   {
     id: window.crypto.randomUUID(),

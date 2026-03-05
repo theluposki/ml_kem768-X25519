@@ -3,8 +3,10 @@ import { ref, computed } from 'vue'
 import { RouterLink, useRouter } from 'vue-router';
 import { Emitter } from '@/utils/Emitter';
 import { useMyUserStore } from '@/stores/myuser'
+import Avatar from './avatar/avatar.vue';
 
 const { back } = useRouter();
+
 const myUserStore = useMyUserStore();
 
 const perfil = computed(() => myUserStore.myUser)
@@ -12,8 +14,20 @@ const perfil = computed(() => myUserStore.myUser)
 const hamburguerLine = ref(false);
 const showBackButton = ref(false);
 const showMenuButton = ref(true);
+const showConversation = ref(false);
+
+const currentConversation = ref({})
+
+Emitter.on('set-conversation', (value) => {
+  currentConversation.value = value
+})
 
 const isFullscreen = ref(false)
+
+const backToPage = () => {
+  showConversation.value = false
+  back()
+}
 
 const toggleFullscreen = async () => {
   if (!document.fullscreenElement) {
@@ -28,7 +42,6 @@ const toggleFullscreen = async () => {
 Emitter.on('active-btn-back', () => {
   showBackButton.value = true
   showMenuButton.value = false
-
   Emitter.emit('close-menu')
 })
 
@@ -40,6 +53,12 @@ Emitter.on('active-btn-menu', () => {
 Emitter.on('icon-close', (value) => {
   hamburguerLine.value = value
 })
+
+Emitter.on('show-conversation', () => {
+  showConversation.value = true
+  showMenuButton.value = false
+  showBackButton.value = true
+})
 const toogleMenu = () => {
   Emitter.emit('toogle-menu')
 }
@@ -48,22 +67,30 @@ const toogleMenu = () => {
 <template>
   <header class="headerM">
     <div class="left">
+
       <div class="btn-menu" v-if="showMenuButton" @click="toogleMenu">
         <i class="ri-menu-unfold-2-line" v-if="hamburguerLine"></i>
         <i class="ri-menu-line" v-else></i>
       </div>
-      <div class="btn-back" @click="back" v-if="showBackButton">
+      <div class="btn-back" @click="backToPage" v-if="showBackButton">
         <i class="ri-arrow-left-long-line"></i>
       </div>
     </div>
-    <div class="center" @click="toggleFullscreen">
+
+    <div class="center" @click="toggleFullscreen" v-if="showConversation === false">
       <img src="@/assets/logo3.png" alt="logo">
     </div>
-    <div class="right">
+
+    <div class="right" v-if="showConversation === false">
       <!-- <span>{{ perfil.nickname }}</span> -->
       <RouterLink to="/myPerfil" class="avatar">
         <img :src="perfil.imageProfile" alt="avatar">
       </RouterLink>
+    </div>
+
+    <div class="headerConversation" v-if="showConversation">
+      <span>{{ currentConversation.nickname }}</span>
+      <Avatar :imageProfile="currentConversation.imageProfile" :status="currentConversation.status" />
     </div>
   </header>
 </template>
@@ -185,5 +212,11 @@ const toogleMenu = () => {
       object-fit: cover;
     }
   }
+}
+
+.headerConversation {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 </style>
