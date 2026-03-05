@@ -39,7 +39,7 @@ const goChat = () => {
     <Avatar :imageProfile="imageProfile" :status="status" />
     <div class="text">
       <span>{{ nickname }}</span>
-      <span class="keys mlkem">{{ hybridKeys?.publicKey?.mlkem.substring(0, 45) }}</span>
+      <!-- <span class="keys mlkem">{{ hybridKeys?.publicKey?.mlkem.substring(0, 45) }}</span> -->
       <span class="keys x255">{{ hybridKeys?.publicKey?.x25519.substring(0, 20) }}</span>
     </div>
   </li>
@@ -79,7 +79,7 @@ const goChat = () => {
   }
 
   &.x255 {
-    color: var(--green4);
+    color: var(--green5);
     font-size: 6px;
   }
 }
